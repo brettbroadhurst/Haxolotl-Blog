@@ -1,3 +1,3 @@
-module gitlab.com/brettbroadhurst/haxolotl-blog/v2
+module gitlab.com/brettbroadhurst/haxolotl-blog/backend/v2
 
 go 1.15
