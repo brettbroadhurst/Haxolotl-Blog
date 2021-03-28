@@ -8,6 +8,7 @@ import (
 	fmt "fmt"
 	mongo "go.mongodb.org/mongo-driver/mongo"
 	options "go.mongodb.org/mongo-driver/mongo/options"
+	readpref "go.mongodb.org/mongo-driver/mongo/readpref"
 	log "log"
 	time "time"
 )
@@ -21,6 +22,7 @@ type Database struct {
 	client *mongo.Client
 }
 
+// Create a new database client object
 func CreateDatabaseClient(l *log.Logger) *Database {
 	return &Database{logger: l, client: nil}
 }
@@ -50,6 +52,12 @@ func (db *Database) Connect(username, password, host, collection string) error {
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	err = db.client.Connect(ctx)
 	if err != nil {
+		db.logger.Println(err)
+		return err
+	}
+
+	// Attempt to ping the connection
+	if err = db.client.Ping(ctx, readpref.Primary()); err != nil {
 		db.logger.Println(err)
 		return err
 	}
