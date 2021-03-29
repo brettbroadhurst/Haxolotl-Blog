@@ -9,17 +9,6 @@ import (
 	time "time"
 )
 
-type Post struct {
-	Id primitive.ObjectID `bson:"_id,omitempty"`
-	//AuthorId  primitive.ObjectID  `bson:"authorId,omitempty"`
-	Title     string              `bson:"title,omitempty"`
-	Slug      string              `bson:"slug,omitempty"`
-	Content   string              `bson:"content,omitempty"`
-	Tags      []string            `bson:"tags,omitempty"`
-	CreatedAt primitive.Timestamp `bson:"createdAt,omitempty"`
-	UpdatedAt primitive.Timestamp `bson:"updatedAt,omitempty"`
-}
-
 // Create a new post in the database
 func (db *Database) CreatePost(title, content string) *Post {
 	database := db.client.Database("blog")
