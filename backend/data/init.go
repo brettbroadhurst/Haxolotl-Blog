@@ -28,7 +28,7 @@ func CreateDatabaseClient(l *log.Logger) *Database {
 }
 
 // Connect to the database
-func (db *Database) Connect(username, password, host, collection string) error {
+func (db *Database) Connect(host, collection string) error {
 	var err error
 
 	log.Println("Not using username and password for authentication.")

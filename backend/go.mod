@@ -1,5 +1,5 @@
-module gitlab.com/brettbroadhurst/haxolotl-blog/backend/v2
+module github.com/ihaxolotl/haxolotl-blog/backend
 
 go 1.15
 
-require go.mongodb.org/mongo-driver v1.5.0 // indirect
+require go.mongodb.org/mongo-driver v1.5.0
