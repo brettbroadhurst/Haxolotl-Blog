@@ -5,6 +5,7 @@ package data
 
 import (
 	context "context"
+	util "github.com/ihaxolotl/haxolotl-blog/backend/util"
 	primitive "go.mongodb.org/mongo-driver/bson/primitive"
 	time "time"
 )
@@ -30,5 +31,10 @@ func (db *Database) CreatePost(title, content string) *Post {
 		return nil
 	}
 
-	return &Post{Id: res.InsertedID.(primitive.ObjectID), Title: title, Content: content}
+	return &Post{
+		Id:      res.InsertedID.(primitive.ObjectID),
+		Title:   title,
+		Slug:    util.MarshalSlug(title),
+		Content: content,
+	}
 }

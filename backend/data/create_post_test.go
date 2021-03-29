@@ -18,7 +18,7 @@ func TestCreatePost(t *testing.T) {
 	db := CreateDatabaseClient(l)
 
 	// Attempt to connect
-	if err := db.Connect("brett", "brett", "172.17.0.3", "posts"); err != nil {
+	if err := db.Connect("brett", "brett", "172.17.0.2", "posts"); err != nil {
 		t.Fatal("Could not connect to the database.")
 	}
 
